@@ -3,9 +3,9 @@ import { User } from './user.entity';
 import { AuthCredentialDto } from './dto/auth-credential.dto';
 import * as bcrypt from 'bcrypt';
 import {
-  BadRequestException,
   ConflictException,
-  InternalServerErrorException, UnauthorizedException
+  InternalServerErrorException,
+  UnauthorizedException,
 } from '@nestjs/common';
 
 @EntityRepository(User)
