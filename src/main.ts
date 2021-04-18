@@ -1,8 +1,10 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as rateLimit from 'express-rate-limit';
+import { Logger } from '@nestjs/common';
 
 async function bootstrap() {
+  const logger = new Logger('bootstrap');
   const app = await NestFactory.create(AppModule);
 
   app.use(
@@ -15,5 +17,6 @@ async function bootstrap() {
   app.setGlobalPrefix(`api/${version}`);
   const PORT = 8080;
   await app.listen(PORT);
+  logger.log(`Application listening on port ${PORT}`);
 }
 bootstrap();

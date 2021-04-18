@@ -26,13 +26,15 @@ export class AuthService {
     if (!user) {
       return;
     }
+    console.log(user.tasks);
     const { username, id } = user;
     const payload: JwtPayload = { username, id };
     const accessToken = await this.jwtService.sign(payload);
     return {
+      accessToken,
       user: { id: user.id, username: user.username, password: null },
       message: 'Login successfully',
-      accessToken,
+      tasks: user.tasks,
     };
   }
 }
